@@ -1,23 +1,18 @@
-<B>Implement a Landing Zone and Observability</B>
+<B> Implement a Landing Zone and Observability</B>
+gcloud config set project $HOST_PROJECT_ID
 
 Task 1:
-
 gcloud config set project qwiklabs-gcp-04-15007f6e147f
 mkdir shared-vpc
 gsutil -m cp -r gs://qwiklabs-gcp-04-15007f6e147f-labconfig-bucket/*  ~/shared-vpc/
-
 cd shared-vpc/
 cat <<EOF > variable.tf
 variable "gcp_project_id" {
   type        = string
   description = "The GCP Project ID to apply this config to."
-  default = "qwiklabs-gcp-04-5adc485d3282"
+  default = ""
 }
 EOF
-
-
-
-
 terraform init
 terraform plan
 terraform apply -auto-approve
@@ -25,10 +20,9 @@ export HOST_PROJECT_ID="qwiklabs-gcp-04-15007f6e147f"
 export SERVICE_PROJECT_ID="qwiklabs-gcp-01-fdf2db5dda3c"
 gcloud compute shared-vpc enable $HOST_PROJECT_ID
 gcloud compute shared-vpc associated-projects add $SERVICE_PROJECT_ID --host-project=$HOST_PROJECT_ID
-
 export HOST_PROJECT_NUM=$(gcloud projects describe $HOST_PROJECT_ID --format="value(projectNumber)")
-export SERVICE_PROJECT_NUM=$(gcloud projects describe $SERVICE_PROJECT_ID --format="value(projectNumber)")
 
+export SERVICE_PROJECT_NUM=$(gcloud projects describe $SERVICE_PROJECT_ID --format="value(projectNumber)")
 gcloud compute subnets add-iam-policy-binding shared-network-subnet-01 \
     --project=$HOST_PROJECT_ID \
     --region=$LAB_REGION \
@@ -56,17 +50,14 @@ gcloud compute subnets add-iam-policy-binding shared-network-subnet-02 \
     
 Task 2:    
 
-gcloud config set project $HOST_PROJECT_ID
-# Enable Private Google Access on Subnet 01
 gcloud compute networks subnets update shared-network-subnet-01 \
     --region=us-central1 \
     --enable-private-ip-google-access
 
-# Enable Private Google Access on Subnet 02
 gcloud compute networks subnets update shared-network-subnet-02 \
     --region=us-central1 \
     --enable-private-ip-google-access
-
+    
 gcloud compute firewall-rules create cymbal-firewall-rule \
     --network=shared-network \
     --direction=INGRESS \
@@ -75,9 +66,6 @@ gcloud compute firewall-rules create cymbal-firewall-rule \
     --rules=tcp:22 \
     --source-ranges=35.235.240.0/20
 
-    
-
- 
  gcloud compute routers create landing-zone-router\
     --network=shared-network \
     --region=us-central1
@@ -88,7 +76,6 @@ gcloud compute firewall-rules create cymbal-firewall-rule \
     --auto-allocate-nat-external-ips \
     --nat-all-subnet-ip-ranges
  
- 
 Task 3:
 
 cd
@@ -96,7 +83,6 @@ git clone https://github.com/terraform-google-modules/terraform-google-vm.git
 
 # Navigate to the target example folder
 cd terraform-google-vm/examples/compute_instance/simple
-
 
 sed -i 's|subnetwork\s*=\s*".*"|subnetwork = "projects/qwiklabs-gcp-01-815ac148bbc7/regions/us-central1/subnetworks/shared-network-subnet-01"|g' main.tf
     
