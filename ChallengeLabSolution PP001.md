@@ -2,7 +2,7 @@
 <br><br>
 gcloud config set project $HOST_PROJECT_ID
 
-Task 1:
+Task 1:<br><br>
 gcloud config set project qwiklabs-gcp-04-15007f6e147f
 mkdir shared-vpc
 gsutil -m cp -r gs://qwiklabs-gcp-04-15007f6e147f-labconfig-bucket/*  ~/shared-vpc/
