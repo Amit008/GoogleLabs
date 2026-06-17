@@ -1,5 +1,4 @@
-Implement a Landing Zone and Observability
-Build a hardened main.tf file configuration
+Create a Landing Zone and Harden it with Security Command Center: Challenge Lab
 <br><br>
 gcloud config set project $HOST_PROJECT_ID
 
