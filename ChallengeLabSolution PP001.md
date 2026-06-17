@@ -1,4 +1,5 @@
-<B> Implement a Landing Zone and Observability</B><br><br>
+<B><B><B><B><B> Implement a Landing Zone and Observability</B>
+<br><br>
 gcloud config set project $HOST_PROJECT_ID
 
 Task 1:
