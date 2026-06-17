@@ -1,3 +1,5 @@
+Implement a Landing Zone and Observability
+
 Task 1:
 
 gcloud config set project qwiklabs-gcp-04-15007f6e147f
