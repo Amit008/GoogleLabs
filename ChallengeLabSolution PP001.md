@@ -1,4 +1,6 @@
 <B>Implement a Landing Zone and Observability</B>
+ to the target example folder
+
 <br><br>
 gcloud config set project $HOST_PROJECT_ID
 
