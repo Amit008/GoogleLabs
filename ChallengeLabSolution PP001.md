@@ -1,5 +1,5 @@
 Implement a Landing Zone and Observability
-
+Build a hardened main.tf file configuration
 <br><br>
 gcloud config set project $HOST_PROJECT_ID
 
