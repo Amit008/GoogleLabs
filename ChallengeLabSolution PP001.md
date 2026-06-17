@@ -1,4 +1,4 @@
-Create a Landing Zone and Harden it with Security Command Center: Challenge Lab
+**Create a Landing Zone and Harden it with Security Command Center**
 <br><br>
 gcloud config set project $HOST_PROJECT_ID
 
