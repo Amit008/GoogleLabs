@@ -1,4 +1,4 @@
-<B>Implement a Landing Zone and Observability<B>
+<B>Implement a Landing Zone and Observability</B>
 
 Task 1:
 
