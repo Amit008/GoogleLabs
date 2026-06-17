@@ -8,7 +8,7 @@ gcloud compute ssl-certificates create webserver-cert \
     --domains=00-00-00-00.qlencrypt.com \
     --global
 Replace 00-00-00-00 above with the global static external IP address you created in the same format (with each octet separated by dashes - NOT DECIMALS).
-Create an SSL certificate.
+Create an SSL certificate.<br>
 Task 2. Create an unmanaged instance group
 Cymbal's application teams have deployed a web application on VM instances called webserver1 and webserver2. You have to make this web applications available to the public internet via a highly available Global external Application Load Balancing service.
 Create an unmanaged instance group webserver-instance-group in the default zone zone.
